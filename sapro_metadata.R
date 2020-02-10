@@ -10,7 +10,7 @@ library("assertr")
 
 # Dataset level info -----------------------------------------------------------
 
-title <- "Parasite growth and survival, reproduction, and population modeling of Epischura baikalensis under warming conditions"
+title <- "Parasite growth and survival, reproduction, and population modeling of Epischurella baikalensis under warming conditions"
 
 pub_date <- 2020
 
