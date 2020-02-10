@@ -6,6 +6,7 @@ library("here")
 library("EML")
 library("readxl")
 library("tidyverse")
+library("assertr")
 
 # Dataset level info -----------------------------------------------------------
 
@@ -113,6 +114,95 @@ sapro_data <- list(
 
 # Epischurella survival and reproduction ---------------------------------------
 
+phys_epi <- set_physical(here("data", "episch_survival_reproduction.xlsx.xlsx"))
+
+epi_defs_base <- data.frame(
+  stringsAsFactors = FALSE,
+  attributeName = c("Live","Gravid","Eggs",
+                    "Sapro","Eggs sapro","Nauplii","Nauplii Count",
+                    "Nauplii sapro","Notes","Sample name"),
+  attributeDefinition = c("0-animal (adult or nauplius initially placed in well) dead, 1-animal alive",
+                          "0-animal not gravid, 1-animal gravid",
+                          "0-egg sack not present, 1-egg sack present, 2-two egg sacs present",
+                          "0-animal (adult or nauplius initially placed in well) does not have apparent sapro infection, 1-apparent sapro hyphae",
+                          "0-egg sack without apparent sapro hyphae, 1-egg sack with apparent sapro hyphae",
+                          "0-no newly hatched nauplii present, 1-newly hatched nauplii present",
+                          "number of nauplii (live+dead) visible in well (count done twice, since live nauplii hard to count)",
+                          "0-nauplii do not show sapro, 1-nauplii show sapro",
+                          "notes","name of sample"),
+  definition = c(NA,NA,NA,NA,NA,NA,
+                 NA,NA,"notes","name of sample"),
+  unit = c(NA, NA, NA, NA, NA, NA, "dimensionless", NA, NA, NA),
+  numberType = c(NA, NA, NA, NA, NA, NA, "real", NA, NA, NA),
+  measurementScale = c("nominal","nominal",
+                       "nominal","nominal","nominal","nominal","ratio",
+                       "nominal","nominal","nominal"),
+  domain = c("enumeratedDomain", "enumeratedDomain",
+             "enumeratedDomain","enumeratedDomain", "enumeratedDomain",
+             "enumeratedDomain", "numericDomain","enumeratedDomain",
+             "textDomain","textDomain")
+)
+
+## Column names in Epischurella data
+epi_col_names <- names(read_excel(here("data", "episch_survival_reproduction.xlsx")))
+
+## Create mapping table of column names to "base" names ("Live"/"Gravid"/"Eggs"
+## etc. without time points)
+epi_mapping <- data.frame(
+  attributeName = epi_col_names,
+  stringsAsFactors = FALSE
+) %>%
+  mutate(
+    ## Get "base" name by remove time info at the end
+    base_attr_name = str_remove(attributeName, "(\\s(1|2))?-T[0-9]+(\\.5)?"),
+    base_attr_name = case_when(
+      ## Fix typo
+      base_attr_name == "Naplii sapro" ~ "Nauplii sapro",
+      TRUE ~ base_attr_name
+    )
+  )
+
+## Join with attribute information
+epi_defs <- epi_mapping %>%
+  left_join(epi_defs_base, by = c("base_attr_name" = "attributeName")) %>%
+  select(-base_attr_name) %>%
+  ## Ensure we have the right number of rows
+  verify(nrow(.) == length(epi_col_names))
+
+## Definitions of codes used in data
+epi_factors_base <- list(
+  Live = c("0" = "dead", "1" = "alive"),
+  Gravid = c("0" = "not gravid", "1" = "gravid"),
+  Eggs = c("0" = "egg sack not present", "1" = "egg sack present"),
+  Sapro = c("0" = "animal (adult or nauplius initially placed in well) does not have apparent sapro infection", "1" = "apparent sapro hyphae"),
+  `Eggs sapro` = c("0" = "egg sack without apparent sapro hyphae", "1" = "egg sack with apparent sapro hyphae"),
+  Nauplii = c("0" = "no newly hatched nauplii present", "1" = "newly hatched nauplii present"),
+  `Nauplii sapro` = c("0" = "nauplii do not show sapro", "1" = "nauplii show sapro")
+) %>%
+  imap_dfr(function(x, y) {
+    data.frame(
+      attributeName = y,
+      code = names(x),
+      definition = unname(x),
+      stringsAsFactors = FALSE
+    )
+  })
+
+## Join code definitions with all column names
+epi_factors <- epi_mapping %>%
+  left_join(epi_factors_base, by = c("base_attr_name" = "attributeName")) %>%
+  select(-base_attr_name)
+
+## Combine all attribute info
+epi_defs <- set_attributes(epi_defs, epi_factors)
+
+epi_data <- list(
+  entityName = "episch_survival_reproduction.xlsx",
+  entityDescription = "Epischura survival and reproduction",
+  physical = phys_epi,
+  attributeList = epi_defs
+)
+
 # Modeling inputs and outputs --------------------------------------------------
 
 # Long-term data ---------------------------------------------------------------
@@ -128,7 +218,7 @@ dataset <- list(
   keywordSet = keyword_set,
   coverage = coverage,
   contact = ted,
-  dataTable = sapro_data
+  dataTable = list(sapro_data, epi_data)
 )
 
 eml <- list(
