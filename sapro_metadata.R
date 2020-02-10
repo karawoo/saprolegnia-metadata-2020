@@ -227,5 +227,5 @@ eml <- list(
   dataset = dataset
 )
 
-write_eml(eml, "eml.xml")
-eml_validate("eml.xml")
+write_eml(eml, "saprolegnia_metadata.xml")
+eml_validate("saprolegnia_metadata.xml")
