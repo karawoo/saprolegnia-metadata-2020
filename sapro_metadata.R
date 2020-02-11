@@ -205,6 +205,47 @@ epi_data <- list(
 
 # Modeling inputs and outputs --------------------------------------------------
 
+## Temperature scenarios
+
+phys_temp_input <- set_physical(
+  here("data", "model_data", "model_temp_scenarios.xlsx")
+)
+
+## Get column names
+temp_input_names <- names(
+  read_excel(here("data", "model_data", "model_temp_scenarios.xlsx"), sheet = 1)
+)
+
+## Create attribute table for temp input scenarios
+temp_input_defs <- data.frame(
+  attributeName = temp_input_names,
+  stringsAsFactors = FALSE
+) %>%
+  mutate(
+    attributeDefinition = case_when(
+      attributeName == "DOY" ~ "day of year",
+      str_detect(attributeName, "DVM") ~ "daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic",
+      TRUE ~ "pelagic temperature based on long-term data (1951-2002)"
+    ),
+    unit = case_when(
+      attributeName == "DOY" ~ "dimensionless",
+      TRUE ~ "celsius"
+    ),
+    numberType = "real",
+    measurementScale = "interval",
+    domain = "numericDomain"
+  )
+
+temp_input_defs <- set_attributes(temp_input_defs)
+
+temp_input_data <- list(
+  entityName = "model_temp_scenarios.xlsx",
+  entityDescription = "Temperature scenarios used to run the Epischurella population model",
+  physical = phys_temp_input,
+  attributeList = temp_input_defs
+)
+
+
 # Long-term data ---------------------------------------------------------------
 
 # Construct metadata -----------------------------------------------------------
@@ -218,7 +259,7 @@ dataset <- list(
   keywordSet = keyword_set,
   coverage = coverage,
   contact = ted,
-  dataTable = list(sapro_data, epi_data)
+  dataTable = list(sapro_data, epi_data, temp_input_data)
 )
 
 eml <- list(
