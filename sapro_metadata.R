@@ -8,6 +8,18 @@ library("readxl")
 library("tidyverse")
 library("assertr")
 
+# Functions --------------------------------------------------------------------
+
+## Create documentation of a file (dataTable)
+create_data_table <- function(file, description, attributes) {
+  list(
+    entityName = basename(file),
+    entityDescription = description,
+    physical = set_physical(file),
+    attributeList = attributes
+  )
+}
+
 # Dataset level info -----------------------------------------------------------
 
 title <- "Parasite growth and survival, reproduction, and population modeling of Epischurella baikalensis under warming conditions"
@@ -65,9 +77,6 @@ coverage <- set_coverage(
 
 # Sapro growth on agar ---------------------------------------------------------
 
-## Physical metadata
-phys_sapro <- set_physical(here("data", "saprolegnia_growth_agar.xlsx"))
-
 ## Attributes
 sapro_defs <- data.frame(
   stringsAsFactors = FALSE,
@@ -105,16 +114,13 @@ sapro_defs <- data.frame(
 )
 sapro_defs <- set_attributes(sapro_defs)
 
-sapro_data <- list(
-  entityName = "saprolegia_growth_agar.xlsx",
-  entityDescription = "Saprolegnia colony growth on agar",
-  physical = phys_sapro,
-  attributeList = sapro_defs
+sapro_data <- create_data_table(
+  file = here("data", "saprolegnia_growth_agar.xlsx"),
+  description = "Saprolegnia colony growth on agar",
+  attributes = sapro_defs
 )
 
 # Epischurella survival and reproduction ---------------------------------------
-
-phys_epi <- set_physical(here("data", "episch_survival_reproduction.xlsx.xlsx"))
 
 epi_defs_base <- data.frame(
   stringsAsFactors = FALSE,
@@ -196,20 +202,15 @@ epi_factors <- epi_mapping %>%
 ## Combine all attribute info
 epi_defs <- set_attributes(epi_defs, epi_factors)
 
-epi_data <- list(
-  entityName = "episch_survival_reproduction.xlsx",
-  entityDescription = "Epischura survival and reproduction",
-  physical = phys_epi,
-  attributeList = epi_defs
+epi_data <- create_data_table(
+  file = here("data", "episch_survival_reproduction.xlsx"),
+  description = "Epischurella survival and reproduction",
+  attributes = epi_defs
 )
 
 # Modeling inputs and outputs --------------------------------------------------
 
 ## Temperature scenarios
-
-phys_temp_input <- set_physical(
-  here("data", "model_data", "model_temp_scenarios.xlsx")
-)
 
 ## Get column names
 temp_input_names <- names(
@@ -238,13 +239,11 @@ temp_input_defs <- data.frame(
 
 temp_input_defs <- set_attributes(temp_input_defs)
 
-temp_input_data <- list(
-  entityName = "model_temp_scenarios.xlsx",
-  entityDescription = "Temperature scenarios used to run the Epischurella population model",
-  physical = phys_temp_input,
-  attributeList = temp_input_defs
+temp_input_data <- create_data_table(
+  file = here("data", "model_data", "model_temp_scenarios.xlsx"),
+  description = "Temperature scenarios used to run the Epischurella population model",
+  attributes = temp_input_defs
 )
-
 
 # Long-term data ---------------------------------------------------------------
 
