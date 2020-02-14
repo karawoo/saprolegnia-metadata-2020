@@ -56,7 +56,7 @@ other_people <- as_emld(
     as.person("Marianne V. Moore"),
     as.person("Maxim A. Timofeev"),
     as.person("Lyubov R. Izmest'eva"),
-    as.person("Svetlana V. Shimaraeva")
+    as.person("Svetlana V. Shimaraeva"),
     as.person("Helena V. Pislegina"),
     as.person("Olga O. Rusanovskaya"),
     as.person("Eugene A. Silow")
