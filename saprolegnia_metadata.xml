@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="e9cd8c1a-e81b-4124-820d-1531278868bd" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="32ef10f5-fb60-493d-a3ac-8bafa464ccdb" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title>Parasite growth and survival, reproduction, and population modeling of Epischurella baikalensis under warming conditions</title>
+    <title>Effects of warming and oomycete parasite (Saprolegnia) on Lake Baikal copepod (Epischurella baikalensis): results from experiments, long term monitoring and modeling</title>
     <creator>
       <individualName>
         <givenName>Ted</givenName>
@@ -11,7 +11,7 @@
       <electronicMailAddress>cre</electronicMailAddress>
     </creator>
     <pubDate>2020</pubDate>
-    <abstract>This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischura baikalensis. Data comes from laboratory experiments and population modeling. Included are data on the growth of Saprolegnia colonies on agar, survival and reproduction rates of Epischura baikalensis under varying temperature conditions and exposure to Saprolegnia, and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in “Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal” (https://doi.org/10.1101/711655).Rproj.user/</abstract>
+    <abstract>This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischura baikalensis. Data comes from laboratory experiments and population modeling. Included are data on the growth of Saprolegnia colonies on agar, survival and reproduction rates of Epischura baikalensis under varying temperature conditions and exposure to Saprolegnia, and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in “Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal” (https://doi.org/10.1101/711655).</abstract>
     <keywordSet>
       <keyword>Climate change</keyword>
       <keyword>zooplankton</keyword>
@@ -71,7 +71,7 @@
       <electronicMailAddress>cre</electronicMailAddress>
     </contact>
     <dataTable>
-      <entityName>saprolegia_growth_agar.xlsx</entityName>
+      <entityName>saprolegnia_growth_agar.xlsx</entityName>
       <entityDescription>Saprolegnia colony growth on agar</entityDescription>
       <physical>
         <objectName>saprolegnia_growth_agar.xlsx</objectName>
@@ -162,9 +162,11 @@
     </dataTable>
     <dataTable>
       <entityName>episch_survival_reproduction.xlsx</entityName>
-      <entityDescription>Epischura survival and reproduction</entityDescription>
+      <entityDescription>Epischurella survival and reproduction</entityDescription>
       <physical>
-        <objectName>/Users/Kara/work/wsu/saprolegnia-metadata-2020/data/episch_survival_reproduction.xlsx.xlsx</objectName>
+        <objectName>episch_survival_reproduction.xlsx</objectName>
+        <size unit="bytes">374960</size>
+        <authentication method="MD5">83326a369731adb0a6b51cc0683b2935</authentication>
         <dataFormat>
           <textFormat>
             <recordDelimiter>&#13;
@@ -4441,6 +4443,237 @@
                 </textDomain>
               </nonNumericDomain>
             </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+    </dataTable>
+    <dataTable>
+      <entityName>model_temp_scenarios.xlsx</entityName>
+      <entityDescription>Temperature scenarios used to run the Epischurella population model</entityDescription>
+      <physical>
+        <objectName>model_temp_scenarios.xlsx</objectName>
+        <size unit="bytes">38582</size>
+        <authentication method="MD5">b2595e77b5d42ef02127e139cf21a4ca</authentication>
+        <dataFormat>
+          <textFormat>
+            <recordDelimiter>&#13;
+</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>DOY</attributeName>
+          <attributeDefinition>day of year</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicCold</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicColdDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicCool</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicCoolDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicAverage</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicAverageDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicWarm</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicWarmDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicHot</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PelagicHotDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>MidBay</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>MidBayDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Proval</attributeName>
+          <attributeDefinition>pelagic temperature based on long-term data (1951-2002)</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ProvalDVM</attributeName>
+          <attributeDefinition>daily average temperature experienced by a zooplankter spending half its day in surface water and half its day in hypolimnetic</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
           </measurementScale>
         </attribute>
       </attributeList>
