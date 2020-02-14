@@ -22,7 +22,7 @@ create_data_table <- function(file, description, attributes) {
 
 # Dataset level info -----------------------------------------------------------
 
-title <- "Parasite growth and survival, reproduction, and population modeling of Epischurella baikalensis under warming conditions"
+title <- "Effects of warming and oomycete parasite (Saprolegnia) on Lake Baikal copepod (Epischurella baikalensis): results from experiments, long term monitoring and modeling"
 
 pub_date <- 2020
 
@@ -48,17 +48,18 @@ intellectual_rights <- "CC-BY"
 ted <- as_emld(person("Ted", "Ozersky", "tozersky@d.umn.edu", "cre"))
 other_people <- as_emld(
   c(
-    as.person("Teofil Nakov"),
     as.person("Stephanie E. Hampton"),
-    as.person("Nicholas L. Rodenhouse"),
-    as.person("Kirill Shchapov"),
     as.person("Kara H. Woo"),
+    as.person("Kirill Shchapov"),
     as.person("Katie Wright"),
-    as.person("Helena V. Pislegina"),
-    as.person("Lyubov R. Izmest'eva"),
-    as.person("Eugene A. Silow"),
+    as.person("Nicholas L. Rodenhouse"),
+    as.person("Marianne V. Moore"),
     as.person("Maxim A. Timofeev"),
-    as.person("Marianne V. Moore")
+    as.person("Lyubov R. Izmest'eva"),
+    as.person("Svetlana V. Shimaraeva")
+    as.person("Helena V. Pislegina"),
+    as.person("Olga O. Rusanovskaya"),
+    as.person("Eugene A. Silow")
   )
 )
 
