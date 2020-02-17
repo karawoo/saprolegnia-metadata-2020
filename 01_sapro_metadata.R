@@ -209,6 +209,106 @@ epi_data <- create_data_table(
   attributes = epi_defs
 )
 
+# Long-term data ---------------------------------------------------------------
+
+## Sapro long-term data
+sapro_lt_defs <- data.frame(
+     stringsAsFactors = FALSE,
+        attributeName = c("date","upper_lower",
+                          "total_epis","infected_epis","temp_month_max_0_50m"),
+  attributeDefinition = c("sample collection date",
+                          "depth of sample colletion between upper and lower collection intervals",
+                          "concentration of Epischurella baikalensis in sampling interval",
+                          "concentration of visibily Saprolegnia-infected Epischurella baikalensis in sampling interval",
+                          "monthly maximum temperature in the 0-50 m depth layer for sampling month"),
+           definition = c(NA, NA, NA, NA, NA),
+         formatString = c("MM/DD/YYYY", NA, NA, NA, NA),
+                 unit = c(NA, NA, "dimensionless", "dimensionless", "celsius"),
+           numberType = c(NA, NA, "real", "real", "real"),
+     measurementScale = c("ordinal", "ordinal", "ratio", "ratio", "interval")
+)
+
+sapro_lt_defs <- set_attributes(
+  sapro_lt_defs,
+  col_classes = c("Date", "ordered", "numeric", "numeric", "numeric")
+)
+
+sapro_lt_data <- create_data_table(
+  file = here("data", "Sapro_LT_data.xlsx"),
+  description = "Concentration of visibly Saprolegnia-infected Epischurella baikalensis in long-term monitoring data",
+  attributes = sapro_lt_defs
+)
+
+## Epischurella long-term data
+epi_lt_defs <- data.frame(
+     stringsAsFactors = FALSE,
+        attributeName = c("date","DOY",
+                          "lifestage_gen","count","temp_month_avg_0_25m",
+                          "temp_annual_avg_0_25m","temp_summer_max_0_25m","yeartype"),
+  attributeDefinition = c("sample collection date",
+                          "day of year (1-365)",
+                          "Epischurella life stage (adult or juvenile)",
+                          "count of Epischurella life stage on sampling date as thousands of individuals per m2 in 0-250 m depth layer",
+                          "monthly average temperature in the 0-25 m depth layer for sampling month",
+                          "average annual temperature in the 0-25 m depth layer for sampling year",
+                          "maximum summer temperature in the 0-25 m depth layer for sampling year",
+                          "year type calssification (cold, cool, average, warm, hot), based on maximum summer temperatures in the 0-25 m layer"),
+           definition = c(NA,NA,
+                          "Epischurella life stage (adult or juvenile)",NA,NA,NA,NA,NA),
+         formatString = c("MM/DD/YYYY", NA, NA, NA, NA, NA, NA, NA),
+                 unit = c(NA,"dimensionless",NA,
+                          "dimensionless","celsius","celsius","celsius",NA),
+           numberType = c(NA, NA, NA, "real", "real", "real", "real", NA),
+     measurementScale = c("dateTime","interval",
+                          "nominal","ratio","interval","interval","interval",
+                          "nominal"),
+               domain = c("dateTimeDomain",
+                          "numericDomain","enumeratedDomain","numericDomain",
+                          "numericDomain","numericDomain","numericDomain",
+                          "enumeratedDomain")
+)
+
+## Define enumerated values for lifestage_gen and yeartype variables
+epi_lt_factors <- list(
+  lifestage_gen = c("juv" = "juvenile", "adult" = "adult"),
+  yeartype = c(
+    "cold" = "cold year",
+    "average" = "average temperature year",
+    "cool" = "cool year",
+    "warm" = "warm year",
+    "hot" = "hot year"
+    )
+) %>%
+  imap_dfr(function(x, y) {
+    data.frame(
+      attributeName = y,
+      code = names(x),
+      definition = unname(x),
+      stringsAsFactors = FALSE
+    )
+  })
+
+epi_lt_defs <- set_attributes(
+  epi_lt_defs,
+  epi_lt_factors,
+  col_classes = c(
+    "Date",
+    "numeric",
+    "factor",
+    "numeric",
+    "numeric",
+    "numeric",
+    "numeric",
+    "factor"
+  )
+)
+
+epi_lt_data <- create_data_table(
+  file = here("data", "zoop_LT_data.xlsx"),
+  description = "Epischurella abundance 1951-2003",
+  attributes = epi_lt_defs
+)
+
 # Modeling inputs and outputs --------------------------------------------------
 
 ## Temperature scenarios
@@ -246,8 +346,6 @@ temp_input_data <- create_data_table(
   attributes = temp_input_defs
 )
 
-# Long-term data ---------------------------------------------------------------
-
 # Construct metadata -----------------------------------------------------------
 
 dataset <- list(
@@ -259,7 +357,7 @@ dataset <- list(
   keywordSet = keyword_set,
   coverage = coverage,
   contact = ted,
-  dataTable = list(sapro_data, epi_data, temp_input_data)
+  dataTable = list(sapro_data, epi_data, sapro_lt_data, epi_lt_data, temp_input_data)
 )
 
 eml <- list(
