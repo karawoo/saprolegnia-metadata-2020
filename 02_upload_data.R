@@ -30,7 +30,7 @@ eml_file <- here("saprolegnia_metadata.xml")
 metadata_obj <- new(
   "DataObject",
   ## id = doi,
-  format = "eml://ecoinformatics.org/eml-2.2.0",
+  format = "https://eml.ecoinformatics.org/eml-2.2.0",
   filename = eml_file
 )
 dat <- addMember(dat, metadata_obj)
