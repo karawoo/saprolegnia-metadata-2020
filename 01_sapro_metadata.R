@@ -45,9 +45,16 @@ keyword_set <- list(
 
 intellectual_rights <- "CC-BY"
 
-ted <- as_emld(person("Ted", "Ozersky", "tozersky@d.umn.edu", "cre"))
-other_people <- as_emld(
+ted <- person(
+  given = "Ted",
+  family = "Ozersky",
+  email = "tozersky@d.umn.edu",
+  role = "cre"
+)
+
+people <- as_emld(
   c(
+    ted,
     as.person("Stephanie E. Hampton"),
     as.person("Kara H. Woo"),
     as.person("Kirill Shchapov"),
@@ -350,13 +357,13 @@ temp_input_data <- create_data_table(
 
 dataset <- list(
   title = title,
-  creator = ted,
+  creator = people,
   pubDate = pub_date,
   intellectualRights = intellectual_rights,
   abstract = abstract,
   keywordSet = keyword_set,
   coverage = coverage,
-  contact = ted,
+  contact = as_emld(ted),
   dataTable = list(sapro_data, epi_data, sapro_lt_data, epi_lt_data, temp_input_data)
 )
 
