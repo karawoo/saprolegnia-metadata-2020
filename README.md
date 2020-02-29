@@ -81,7 +81,7 @@ if you recreate the following folder structure:
 │   │   │   └── ProvalNoDVM.xls
 │   │   └── model_temp_scenarios.xlsx
 │   ├── saprolegnia_growth_agar.xlsx
-│   ├── temp_out_definitionsTO.xlsx
+│   ├── temp_out_definitionsTO.xlsx # Ted's definitions of modeling output variables
 │   └── zoop_LT_data.xlsx
 ├── renv.lock
 ├── saprolegnia-metadata-2020.Rproj
