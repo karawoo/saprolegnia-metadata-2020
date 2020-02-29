@@ -232,7 +232,7 @@ sapro_lt_defs <- data.frame(
          formatString = c("MM/DD/YYYY", NA, NA, NA, NA),
                  unit = c(NA, NA, "dimensionless", "dimensionless", "celsius"),
            numberType = c(NA, NA, "real", "real", "real"),
-     measurementScale = c("ordinal", "ordinal", "ratio", "ratio", "interval")
+     measurementScale = c("dateTime", "ordinal", "ratio", "ratio", "interval")
 )
 
 sapro_lt_defs <- set_attributes(
