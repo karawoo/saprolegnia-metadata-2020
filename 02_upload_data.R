@@ -17,7 +17,7 @@ library("uuid")
 dat <- new("DataPackage")
 
 ## Create series ID
-series_id <- sprintf("urn:uuid:%s", UUIDgenerate())
+(series_id <- sprintf("urn:uuid:%s", UUIDgenerate()))
 dat@sysmeta@seriesId <- series_id
 
 ## Get DOI (later)
@@ -38,9 +38,12 @@ dat <- addMember(dat, metadata_obj)
 ## Add files (just 3 for now)
 files <- tibble(
   filename = c(
-    here("data", "episch_survival_reproduction.xlsx"),
     here("data", "saprolegnia_growth_agar.xlsx"),
-    here("data", "model_data", "model_temp_scenarios.xlsx")
+    here("data", "episch_survival_reproduction.xlsx"),
+    here("data", "Sapro_LT_data.xlsx"),
+    here("data", "zoop_LT_data.xlsx"),
+    here("data", "model_data", "model_temp_scenarios.xlsx"),
+    list.files(here("data", "model_data", "renamed_output"), full.names = TRUE)
   )
 ) %>%
   mutate(format = guess_type(filename)) %>%
