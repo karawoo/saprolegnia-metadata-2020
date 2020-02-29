@@ -26,7 +26,7 @@ title <- "Effects of warming and oomycete parasite (Saprolegnia) on Lake Baikal 
 
 pub_date <- 2020
 
-abstract <- "This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischura baikalensis. Data comes from laboratory experiments and population modeling. Included are data on the growth of Saprolegnia colonies on agar, survival and reproduction rates of Epischura baikalensis under varying temperature conditions and exposure to Saprolegnia, and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in “Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal” (https://doi.org/10.1101/711655)."
+abstract <- "This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischura baikalensis. Data comes from laboratory experiments and population modeling. Included are data on the growth of Saprolegnia colonies on agar; survival and reproduction rates of Epischura baikalensis under varying temperature conditions and exposure to Saprolegnia; zooplankton abundance and Saprolegnia presence in long-term monitoring data; and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in “Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal” (https://doi.org/10.1101/711655)."
 
 keyword_set <- list(
   list(
@@ -71,7 +71,7 @@ people <- as_emld(
 )
 
 coverage <- set_coverage(
-  beginDate = "2013",
+  beginDate = "1951",
   endDate = "2019",
   sci_names = c("Epischurella baikalensis", "Saprolegnia sp."),
   geographicDescription = "Lake Baikal, Siberia",
