@@ -228,16 +228,16 @@ sapro_lt_defs <- data.frame(
                           "concentration of Epischurella baikalensis in sampling interval",
                           "concentration of visibily Saprolegnia-infected Epischurella baikalensis in sampling interval",
                           "monthly maximum temperature in the 0-50 m depth layer for sampling month"),
-           definition = c(NA, NA, NA, NA, NA),
+           definition = c(NA, "sample collection interval", NA, NA, NA),
          formatString = c("MM/DD/YYYY", NA, NA, NA, NA),
                  unit = c(NA, NA, "dimensionless", "dimensionless", "celsius"),
            numberType = c(NA, NA, "real", "real", "real"),
-     measurementScale = c("dateTime", "ordinal", "ratio", "ratio", "interval")
+     measurementScale = c("dateTime", "nominal", "ratio", "ratio", "interval")
 )
 
 sapro_lt_defs <- set_attributes(
   sapro_lt_defs,
-  col_classes = c("Date", "ordered", "numeric", "numeric", "numeric")
+  col_classes = c("Date", "character", "numeric", "numeric", "numeric")
 )
 
 sapro_lt_data <- create_data_table(
