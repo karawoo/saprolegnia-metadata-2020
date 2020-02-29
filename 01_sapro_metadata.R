@@ -265,7 +265,7 @@ epi_lt_defs <- data.frame(
          formatString = c("MM/DD/YYYY", NA, NA, NA, NA, NA, NA, NA),
                  unit = c(NA,"dimensionless",NA,
                           "dimensionless","celsius","celsius","celsius",NA),
-           numberType = c(NA, NA, NA, "real", "real", "real", "real", NA),
+           numberType = c(NA, "integer", NA, "real", "real", "real", "real", NA),
      measurementScale = c("dateTime","interval",
                           "nominal","ratio","interval","interval","interval",
                           "nominal"),
