@@ -11,8 +11,11 @@ if you recreate the following folder structure:
 
 ```
 .
+├── 01_sapro_metadata.R
+├── 02_upload_data.R
 ├── README.md
 ├── data
+│   ├── Sapro_LT_data.xlsx
 │   ├── episch_survival_reproduction.xlsx
 │   ├── model_data
 │   │   ├── ModelOutFiles.txt
@@ -77,11 +80,23 @@ if you recreate the following folder structure:
 │   │   │   ├── ProvalDVM.xls
 │   │   │   └── ProvalNoDVM.xls
 │   │   └── model_temp_scenarios.xlsx
-│   └── saprolegnia_growth_agar.xlsx
-├── renv
-│   ├── activate.R
-│   └── settings.dcf
+│   ├── saprolegnia_growth_agar.xlsx
+│   ├── temp_out_definitionsTO.xlsx
+│   └── zoop_LT_data.xlsx
 ├── renv.lock
-├── sapro_metadata.R
-└── saprolegnia-metadata-2020.Rproj
+├── saprolegnia-metadata-2020.Rproj
+└── saprolegnia_metadata.xml
+```
+
+Because the model output files have duplicated names and are organized into
+folders, which can't be replicated on KNB, I rename them by running the
+following from within the `data/model_data/` folder:
+
+```
+mkdir renamed_output
+find * -path "renamed_output" -prune -o -type f -exec \
+bash -c 'cp "$1" "renamed_output/${1/\//-}"' find_bash '{}' \;
+cd renamed_output
+rm ModelOutFiles.txt
+rm model_temp_scenarios.xlsx
 ```
