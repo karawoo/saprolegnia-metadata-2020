@@ -15,7 +15,7 @@ create_data_table <- function(file, description, attributes) {
   list(
     entityName = basename(file),
     entityDescription = description,
-    physical = set_physical(file),
+    physical = suppressMessages(set_physical(file)),
     attributeList = attributes
   )
 }
@@ -316,7 +316,7 @@ epi_lt_data <- create_data_table(
   attributes = epi_lt_defs
 )
 
-# Modeling inputs and outputs --------------------------------------------------
+# Modeling inputs --------------------------------------------------------------
 
 ## Temperature scenarios
 
@@ -353,6 +353,62 @@ temp_input_data <- create_data_table(
   attributes = temp_input_defs
 )
 
+# Modeling outputs -------------------------------------------------------------
+
+output_defs <- read_excel(here("data", "temp_out_definitionsTO.xlsx"))
+
+output_defs <- output_defs %>%
+  mutate(unit = case_when(
+    unit == "degrees celcius" ~ "celsius",
+    TRUE ~ unit
+  )) %>%
+  ## If units aren't in standard list, add them to definition and use
+  ## dimensionless. TODO: replace with custom units
+  mutate(
+    attributeDefinition = case_when(
+      !unit %in% get_unitList()$units$id ~ glue::glue("{attributeDefinition} ({unit})"),
+      TRUE ~ attributeDefinition
+    ),
+    unit = case_when(
+      !unit %in% get_unitList()$units$id ~ "dimensionless",
+      TRUE ~ unit
+    )
+  )
+
+## NoSap files have one different column name than the rest, so need to set
+## attributes for them separately
+output_defs_nosap <- set_attributes(filter(output_defs, attributeName != "Days"))
+output_defs_sap   <- set_attributes(filter(output_defs, attributeName != "Time"))
+
+## File names
+nosap <- list.files(
+  here("data", "model_data", "renamed_output"),
+  pattern = "^NoSap(.+)",
+  full.names = TRUE
+)
+
+sap <- list.files(
+  here("data", "model_data", "renamed_output"),
+  pattern = "^Sap(.+)",
+  full.names = TRUE
+)
+
+## Create data dables
+output_data_nosap <- map(
+  nosap,
+  create_data_table,
+  description = "Outputs from Epischurella population models",
+  attributes = output_defs_nosap
+)
+
+output_data_sap <- map(
+  sap,
+  create_data_table,
+  description = "Outputs from Epischurella population models",
+  attributes = output_defs_sap
+)
+
+
 # Construct metadata -----------------------------------------------------------
 
 dataset <- list(
@@ -364,7 +420,15 @@ dataset <- list(
   keywordSet = keyword_set,
   coverage = coverage,
   contact = as_emld(ted),
-  dataTable = list(sapro_data, epi_data, sapro_lt_data, epi_lt_data, temp_input_data)
+  dataTable = list(
+    sapro_data,
+    epi_data,
+    sapro_lt_data,
+    epi_lt_data,
+    temp_input_data,
+    output_data_sap,
+    output_data_nosap
+  )
 )
 
 eml <- list(
