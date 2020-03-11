@@ -62,8 +62,8 @@ for (i in seq_along(data_objects)) {
 ## Access -- Ted and me for now
 access <- data.frame(
   subject = c(
-    "https://orcid.org/0000-0002-5125-4188",
-    "https://orcid.org/0000-0002-1842-7745"
+    "http://orcid.org/0000-0002-5125-4188",
+    "http://orcid.org/0000-0002-1842-7745"
   ),
   permission = "changePermission"
 )
