@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="0194609f-6e69-4494-8c13-9fa968ba9575" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="urn:uuid:dcf9c896-ec11-438c-85a3-1ed1bca376f2" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
     <title>Effects of warming and oomycete parasite (Saprolegnia) on Lake Baikal copepod (Epischurella baikalensis): results from experiments, long term monitoring and modeling</title>
     <creator>
@@ -103,7 +103,11 @@
       <keyword>Saprolegnia</keyword>
       <keyword>Diel Vertical Migration</keyword>
     </keywordSet>
-    <intellectualRights>CC-BY</intellectualRights>
+    <licensed>
+      <licenseName>Creative Commons Attribution 4.0 International</licenseName>
+      <url>https://creativecommons.org/licenses/by/4.0/legalcode</url>
+      <identifier>CC-BY-4.0</identifier>
+    </licensed>
     <coverage>
       <geographicCoverage>
         <geographicDescription>Lake Baikal, Siberia</geographicDescription>
