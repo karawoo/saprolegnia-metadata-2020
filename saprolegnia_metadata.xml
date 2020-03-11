@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="urn:uuid:dcf9c896-ec11-438c-85a3-1ed1bca376f2" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="urn:uuid:5de7ff7a-8df5-4ad6-8669-cbd236ca047f" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
     <title>Effects of warming and oomycete parasite (Saprolegnia) on Lake Baikal copepod (Epischurella baikalensis): results from experiments, long term monitoring and modeling</title>
     <creator>
@@ -92,7 +92,7 @@
       </individualName>
     </creator>
     <pubDate>2020</pubDate>
-    <abstract>This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischurella baikalensis. The data comes from laboratory experiments, long-term monitoring records, and population modeling. Included are data on the growth of Saprolegnia colonies on agar; survival and reproduction rates of Epischurella baikalensis under varying temperature conditions and exposure to Saprolegnia; zooplankton abundance and Saprolegnia presence from 1951 to 2003 in long-term monitoring data; and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in “Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal” (https://doi.org/10.1101/711655).</abstract>
+    <abstract>This collection contains data related to parasite infection of the endemic Lake Baikal zooplankton Epischurella baikalensis. The data comes from laboratory experiments, long-term monitoring records, and population modeling. Included are data on the growth of Saprolegnia colonies on agar; survival and reproduction rates of Epischurella baikalensis under varying temperature conditions and exposure to Saprolegnia; zooplankton abundance and Saprolegnia presence from 1951 to 2003 in long-term monitoring data; and inputs and outputs from population modeling simulations. Results from analyzing this data can be found in 'Hot and sick: impacts of warming and oomycete parasite infection on endemic dominant zooplankter of Lake Baikal' (https://doi.org/10.1101/711655). Funding: NSF DEB-1136637, DEB-1136657. The long-term Lake Baikal data are part of a data sets No. 2005620028 and No. 2014621482 registered with the government of the Russian Federation. E.V. Pislegina, E.A. Silow and M.A. Timofeyev were supported by a Ministry of Higher Education and Research of Russian Federation award #6.1387.2017 and by funding from the Lake Baikal Foundation (https://baikalfoundation.ru/project/tochka-1/).</abstract>
     <keywordSet>
       <keyword>Climate change</keyword>
       <keyword>zooplankton</keyword>
