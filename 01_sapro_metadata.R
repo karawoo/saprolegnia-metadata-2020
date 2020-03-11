@@ -437,7 +437,7 @@ dataset <- list(
 )
 
 eml <- list(
-  packageId = sprintf("urn:uuid:%s", UUIDgenerate()),
+  packageId = sprintf("urn:uuid:%s", uuid::UUIDgenerate()),
   system = "uuid",
   dataset = dataset
 )
