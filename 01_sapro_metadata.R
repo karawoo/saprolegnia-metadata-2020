@@ -43,7 +43,12 @@ keyword_set <- list(
   )
 )
 
-intellectual_rights <- "CC-BY"
+licensed <- list(
+  licenseName = "Creative Commons Attribution 4.0 International",
+  url = "https://creativecommons.org/licenses/by/4.0/legalcode",
+  identifier = "CC-BY-4.0"
+)
+
 
 ted <- person(
   given = "Ted",
@@ -415,7 +420,7 @@ dataset <- list(
   title = title,
   creator = people,
   pubDate = pub_date,
-  intellectualRights = intellectual_rights,
+  licensed = licensed,
   abstract = abstract,
   keywordSet = keyword_set,
   coverage = coverage,
